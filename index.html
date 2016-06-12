@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="bootstrap扩展对话框插件">
+    <meta name="keywords" content="bootstrap扩展对话框插件,bootstrap中alert,bootstrap中confirm,bootstrap中show,alert弹框,show弹框,confirm弹框"/>
+    <meta name="author" content="刘明明">
+    <title>Bootstrap扩展对话框插件</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="messager.css"/>
+</head>
+
+<body role="document">
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Messager</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">主页</a></li>
+                <li><a href="#about">关于我</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container theme-showcase" role="main">
+    <div class="jumbotron">
+        <h1>简介</h1>
+
+        <p>
+            这是扩展与bootstrap的消息弹框插件。来与新项目的开启，且网上没有合适的对话框插件，所以自己编写的一个，可能有不足，希望大家见谅。
+        </p>
+    </div>
+    <div class="page-header">
+        <h1>案例</h1>
+    </div>
+    <p>1、alert:</p>
+    <pre>
+    arrObject = {
+        Msg:       "content",             //显示给用户看的内容, 如：亲你的邮箱输入有误！
+        iconImg:   "info",                //提示的图标,（info 消息  question 问题 error 错误 warning 警告）
+        title:     "提示",                 //提示标题,  header上面的内容
+        isModal:    true,                 //模态状态开关  true false
+        btnOk:     "确定",                 //确定按钮的默认文字
+        btnCancel: "取消",                 //取消按钮的默认文字
+        isHideDate: 2000 		  //设置自动消失的时间 只对 show弹框起作用
+    }
+    Messager.alert(arrObject); //直接放进去即可 [上面只是说明使用的各个属性的配置] 实际使用如下：
+    Messager.alert({title: '测试', Msg: 'aler提示框', isModal: false}).on(function(flag){回调})
+    </pre>
+    <p>
+        <button type="button" class="btn btn-md btn-primary">alert弹框(普通)</button>
+        <button type="button" class="btn btn-md btn-primary">alert弹框(模态)</button>
+        <button type="button" class="btn btn-md btn-primary">alert弹框(回调)</button>
+        <button type="button" class="btn btn-md btn-primary">alert弹框(改变图标)</button>
+    </p>
+    <p>2、confirm:</p>
+    <pre>
+    确定提示框(用法基本和上面一样,只不过会有一个回调函数,判断用户点击的是确定还是取消)  使用如下：
+    Messager.confirm({title: '只要结果,不要过程', Msg: '下次是否能修改完bug,时候能按期完成版本,能否...？', iconImg: 'question'}).on(function(flag){
+        if(flag){
+            点击确定按钮执行的操作
+        }esle{
+            点击取消钮执执行的操作
+        }
+    });
+    </pre>
+    <p>
+        <button type="button" class="btn btn-md btn-success">confirm弹框</button>
+    </p>
+    <p>2、show:</p>
+    <pre>
+    自动消失的弹出提示框  isHideDate设置时间  尽量加上 isModal: false 非模态方式
+    Messager.show({isModal: false, isHideDate: 2000});
+    </pre>
+    <p>
+        <button type="button" class="btn btn-md btn-info">show弹框</button>
+    </p>
+</div>
+
+<br/><br/><br/><br/><br/>
+<script src="lib/jquery/jquery1.11.3.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="messager.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
